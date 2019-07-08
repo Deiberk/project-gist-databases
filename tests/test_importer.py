@@ -14,7 +14,8 @@ def _test_gist_from_json(db_connection, gist_data):
     query = "SELECT github_id, html_url, git_pull_url, git_push_url, commits_url, forks_url, public, created_at, updated_at, comments, comments_url FROM gists WHERE github_id = :github_id"
     cursor = db_connection.execute(query, {'github_id': gist_data['id']})
     gist = cursor.fetchone()
-
+    print("************************************")
+    print(gist)
     assert gist[0] == gist_data['id']
     assert gist[1] == gist_data['html_url']
     assert gist[2] == gist_data['git_pull_url']
